@@ -1,0 +1,25 @@
+﻿@page "/"
+@using BlazorApp10.Models
+<h1>CSS Isolation not working with Buil-in form components</h1>
+
+<p>This is a built-in blazor component form having a blue background class </p>
+<EditForm Model="@Test" Class="background-blue" OnSubmit="OnSubmit">
+    <InputText @bind-Value="@Test.Name" Class="red-color" Placeholder="expected text color is red" /><br/>
+    <button type="submit" class="btn btn-primary">Does nothing  !</button>
+</EditForm>
+
+<hr />
+
+<p>This is an html form having a blue background class</p>
+<form class="background-blue" @onsubmit="OnSubmit">
+    <input type="text" class="red-color" Placeholder="expected text color is red"/><br/>
+    <button type="submit" class="btn btn-primary">Does nothing !</button>
+</form>
+
+@code {
+    private DemoFormModel Test = new DemoFormModel();
+
+    public void OnSubmit()
+    {
+    }
+}
